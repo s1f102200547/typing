@@ -1,0 +1,13 @@
+image: node:latest
+stages:
+  - deploy
+cache:
+  paths:
+    - node_modules/
+deploy:
+  stage: deploy
+  script:
+    - yarn
+    - yarn build
+    - yarn global add firebase-tools 
+    - firebase deploy --token $FIREBASE_TOKEN
